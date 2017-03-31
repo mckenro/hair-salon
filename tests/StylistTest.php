@@ -38,18 +38,18 @@
             $this->assertEquals($name, $result);
         }
 
-        // function test_getId()
-        // {
-        //     //Arrange
-        //     $name = "Work stuff";
-        //     $test_Category = new Category($name);
-        //     $test_Category->save();
-        //     //Act
-        //     $result = $test_Category->getId();
-        //     //Assert
-        //     $this->assertEquals(true, is_numeric($result));
-        // }
-        //
+        function test_getId()
+        {
+            //Arrange
+            $name = "Mary Poppins";
+            $test_Stylist = new Stylist($name);
+            $test_Stylist->save();
+            //Act
+            $result = $test_Stylist->getId();
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+
         function test_getAll()
         {
              //Arrange
