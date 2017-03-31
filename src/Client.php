@@ -1,5 +1,5 @@
 <?php
-    class Class
+    class Client
     {
         function myFunction()
         {
