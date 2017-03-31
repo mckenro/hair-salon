@@ -64,24 +64,24 @@
         //     return $tasks;
         // }
         //
-        // static function getAll()
-        // {
-        //     $returned_categories = $GLOBALS['DB']->query("SELECT * FROM categories;");
-        //     $categories = array();
-        //     foreach($returned_categories as $category) {
-        //         $name = $category['name'];
-        //         $id = $category['id'];
-        //         $new_category = new Category($name, $id);
-        //         array_push($categories, $new_category);
-        //     }
-        //     return $categories;
-        // }
-        //
+        static function getAll()
+        {
+            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
+            $stylists = array();
+            foreach($returned_stylists as $stylist) {
+                $name = $stylist['name'];
+                $id = $stylist['id'];
+                $new_stylist = new Stylist($name, $id);
+                array_push($stylists, $new_stylist);
+            }
+            return $stylists;
+        }
+
         // static function deleteAll()
         // {
-        //   $GLOBALS['DB']->exec("DELETE FROM categories;");
+        //   $GLOBALS['DB']->exec("DELETE FROM stylists;");
         // }
-        //
+
         // function update($new_name)
         // {
         //     $executed = $GLOBALS['DB']->exec("UPDATE categories SET name = '{$new_name}' WHERE id = {$this->getId()};");
