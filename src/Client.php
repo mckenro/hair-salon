@@ -1,9 +1,91 @@
 <?php
-    class Client
+class Client
+{
+    private $client_name;
+    private $stylist_id;
+    private $id;
+    function __construct($client_name, $assigned_stylist_id, $id = null)
     {
-        function myFunction()
-        {
+        $this->client_name = $client_name;
+        $this->stylist_id = $assigned_stylist_id;
+        $this->id = $id;
+    }
 
+    function getId()
+    {
+        return $this->id;
+    }
+
+    function getName()
+    {
+        return $this->client_name;
+    }
+
+    function getStylistId()
+    {
+        return $this->stylist_id;
+    }
+
+    function setName($new_name)
+    {
+        $this->client_name = (string) $new_name;
+    }
+
+    function setStylistId($new_stylist_id)
+    {
+        $this->stylist_id = (int) $new_stylist_id;
+    }
+
+    function save()
+    {
+        $executed = $GLOBALS['DB']->exec("INSERT INTO clients (client_name, stylist_id) VALUES ('{$this->getName()}', {$this->getStylistId()})");
+        if ($executed) {
+            $this->id = $GLOBALS['DB']->lastInsertId();
+            return true;
+        } else {
+            return false;
         }
     }
+
+    static function getAll()
+    {
+        $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients;");
+        $clients = array();
+        foreach($returned_clients as $client) {
+            $client_name = $client['client_name'];
+            $id = $client['id'];
+            $stylist_id = $client['stylist_id'];
+            $new_client = new Client($client_name, $stylist_id, $id);
+            array_push($clients, $new_client);
+        }
+        return $clients;
+    }
+
+    static function deleteAll()
+    {
+      $executed = $GLOBALS['DB']->exec("DELETE FROM clients;");
+        if ($executed) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // static function find($search_id)
+    // {
+    //     $found_task = null;
+    //     $returned_tasks = $GLOBALS['DB']->prepare("SELECT * FROM tasks WHERE id = :id");
+    //     $returned_tasks->bindParam(':id', $search_id, PDO::PARAM_STR);
+    //     $returned_tasks->execute();
+    //     foreach($returned_tasks as $task) {
+    //         $client_name = $task['client_name'];
+    //         $category_id = $task['category_id'];
+    //         $id = $task['id'];
+    //         if ($id == $search_id) {
+    //           $found_task = new Task($client_name, $category_id, $id);
+    //         }
+    //     }
+    //     return $found_task;
+    //}
+}
 ?>

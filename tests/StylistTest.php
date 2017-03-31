@@ -19,7 +19,7 @@
        function test_save()
         {
             //Arrange
-            $name = "Mary Poppins";
+            $name = "Jose Ebert";
             $test_Stylist = new Stylist($name);
             //Act
             $executed = $test_Stylist->save();
@@ -30,7 +30,7 @@
         function test_getName()
         {
             //Arrange
-            $name = "Mary Poppins";
+            $name = "Jose Ebert";
             $test_Stylist = new Stylist($name);
             //Act
             $result = $test_Stylist->getName();
@@ -41,7 +41,7 @@
         function test_getId()
         {
             //Arrange
-            $name = "Mary Poppins";
+            $name = "Jose Ebert";
             $test_Stylist = new Stylist($name);
             $test_Stylist->save();
             //Act
@@ -53,7 +53,7 @@
         function test_getAll()
         {
              //Arrange
-            $name = "Mary Poppins";
+            $name = "Jose Ebert";
             $name2 = "Sally Hanson";
             $test_Stylist = new Stylist($name);
             $test_Stylist->save();
@@ -68,7 +68,7 @@
         function test_deleteAll()
         {
             //Arrange
-            $name = "Mary Poppins";
+            $name = "Jose Ebert";
             $name2 = "Sally Hanson";
             $test_Stylist = new Stylist($name);
             $test_Stylist->save();
@@ -84,7 +84,7 @@
         function test_find()
         {
             //Arrange
-            $name = "Mary Poppins";
+            $name = "Jose Ebert";
             $name2 = "Sally Hanson";
             $test_Stylist = new Stylist($name);
             $test_Stylist->save();
