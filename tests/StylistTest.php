@@ -3,91 +3,96 @@
     * @backupGlobals disabled
     * @backupStaticAttributes disabled
     */
-    require_once "src/Category.php";
-    $server = 'mysql:host=localhost:8889;dbname=practice_db_test';
+    require_once "src/Stylist.php";
+    $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
-    class CategoryTest extends PHPUnit_Framework_TestCase
+    class StylistTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
-            Category::deleteAll();
-            Task::deleteAll();
+          //  Stylist::deleteAll();
+            // Client::deleteAll();
         }
-        function test_getName()
-        {
-            //Arrange
-            $name = "Work stuff";
-            $test_Category = new Category($name);
-            //Act
-            $result = $test_Category->getName();
-            //Assert
-            $this->assertEquals($name, $result);
-        }
+
        function test_save()
         {
             //Arrange
-            $name = "Work stuff";
-            $test_Category = new Category($name);
+            $name = "Mary Poppins";
+            $test_Stylist = new Stylist($name);
             //Act
-            $executed = $test_Category->save();
+            $executed = $test_Stylist->save();
             // Assert
-            $this->assertTrue($executed, "Category not successfully saved to database");
+            $this->assertTrue($executed, "Stylist not successfully saved to database");
         }
-        function test_getId()
-        {
-            //Arrange
-            $name = "Work stuff";
-            $test_Category = new Category($name);
-            $test_Category->save();
-            //Act
-            $result = $test_Category->getId();
-            //Assert
-            $this->assertEquals(true, is_numeric($result));
-        }
-        function test_getAll()
-        {
-            //Arrange
-            $name = "Work stuff";
-            $name2 = "Home stuff";
-            $test_Category = new Category($name);
-            $test_Category->save();
-            $test_Category2 = new Category($name2);
-            $test_Category2->save();
-            //Act
-            $result = Category::getAll();
-            //Assert
-            $this->assertEquals([$test_Category, $test_Category2], $result);
-        }
-        function test_deleteAll()
-        {
-            //Arrange
-            $name = "Wash the dog";
-            $name2 = "Home stuff";
-            $test_Category = new Category($name);
-            $test_Category->save();
-            $test_Category2 = new Category($name2);
-            $test_Category2->save();
-            //Act
-            Category::deleteAll();
-            $result = Category::getAll();
-            //Assert
-            $this->assertEquals([], $result);
-        }
-        function test_find()
-        {
-            //Arrange
-            $name = "Wash the dog";
-            $name2 = "Home stuff";
-            $test_Category = new Category($name);
-            $test_Category->save();
-            $test_Category2 = new Category($name2);
-            $test_Category2->save();
-            //Act
-            $result = Category::find($test_Category->getId());
-            //Assert
-            $this->assertEquals($test_Category, $result);
-        }
+
+        // function test_getName()
+        // {
+        //     //Arrange
+        //     $name = "Work stuff";
+        //     $test_Category = new Category($name);
+        //     //Act
+        //     $result = $test_Category->getName();
+        //     //Assert
+        //     $this->assertEquals($name, $result);
+        // }
+        //
+        // function test_getId()
+        // {
+        //     //Arrange
+        //     $name = "Work stuff";
+        //     $test_Category = new Category($name);
+        //     $test_Category->save();
+        //     //Act
+        //     $result = $test_Category->getId();
+        //     //Assert
+        //     $this->assertEquals(true, is_numeric($result));
+        // }
+        //
+        // function test_getAll()
+        // {
+        //     //Arrange
+        //     $name = "Work stuff";
+        //     $name2 = "Home stuff";
+        //     $test_Category = new Category($name);
+        //     $test_Category->save();
+        //     $test_Category2 = new Category($name2);
+        //     $test_Category2->save();
+        //     //Act
+        //     $result = Category::getAll();
+        //     //Assert
+        //     $this->assertEquals([$test_Category, $test_Category2], $result);
+        // }
+        // function test_deleteAll()
+        // {
+        //     //Arrange
+        //     $name = "Wash the dog";
+        //     $name2 = "Home stuff";
+        //     $test_Category = new Category($name);
+        //     $test_Category->save();
+        //     $test_Category2 = new Category($name2);
+        //     $test_Category2->save();
+        //     //Act
+        //     Category::deleteAll();
+        //     $result = Category::getAll();
+        //     //Assert
+        //     $this->assertEquals([], $result);
+        // }
+        //
+        // function test_find()
+        // {
+        //     //Arrange
+        //     $name = "Wash the dog";
+        //     $name2 = "Home stuff";
+        //     $test_Category = new Category($name);
+        //     $test_Category->save();
+        //     $test_Category2 = new Category($name2);
+        //     $test_Category2->save();
+        //     //Act
+        //     $result = Category::find($test_Category->getId());
+        //     //Assert
+        //     $this->assertEquals($test_Category, $result);
+        // }
     }
 ?>
