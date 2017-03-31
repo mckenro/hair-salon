@@ -1,3 +1,28 @@
-{% include head.html.twig %}
+{% include 'head.html.twig' %}
+
       <h1>Hair Salon</h1>
-{% include foot.html.twig %}
+
+      <h3>Add a new stylist:</h3>
+
+<form action="/stylists" method="post">
+  <div class='form-group'>
+    <label for="name">Stylist name:</label>
+    <input id="name" name="name" type="text" class="form-control" placeholder="Stylist Full Name">
+  </div>
+  <div class='form-group'>
+    <button type="submit" class="btn btn-primary">Add New Stylist</button>
+  </div>
+</form>
+
+{% if stylists is not empty %}
+    <p>Here are all your stylists:</p>
+    <ul>
+        {% for stylist in stylists %}
+            <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+  <p>There are no stylists yet!</p>
+{% endif %}
+
+{% include 'foot.html.twig' %}

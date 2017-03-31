@@ -65,40 +65,41 @@
         //     $this->assertEquals($new_description, $result);
         // }
         //
-        // function test_getCategoryId()
-        // {
-        //     //Arrange
-        //     $name = "Jose Ebert";
-        //     $test_category = new Category($name);
-        //     $test_category->save();
-        //     $category_id = $test_category->getId();
-        //     $description = "Watch the new Thor movie.";
-        //     $test_task = new Task($description, $category_id);
-        //     //Act
-        //     $result = $test_task->getCategoryId();
-        //     //Assert
-        //     $this->assertEquals($category_id, $result);
-        // }
-        //
-        // function test_setCategoryId()
-        // {
-        //     //Arrange
-        //     $name = "Jose Ebert";
-        //     $test_category = new Category($name);
-        //     $test_category->save();
-        //     $category_id = $test_category->getId();
-        //     $name = "Books to Read";
-        //     $test_category2 = new Category($name);
-        //     $test_category2->save();
-        //     $category_id2 = $test_category2->getId();
-        //     $description = "Watch the new Thor movie.";
-        //     $test_task = new Task($description, $category_id);
-        //     //Act
-        //     $test_task->setCategoryId($category_id2);
-        //     $result = $test_task->getCategoryId();
-        //     //Assert
-        //     $this->assertEquals($category_id2, $result);
-        // }
+        function test_getStylistId()
+        {
+            //Arrange
+            $name = "Jose Ebert";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
+            $client_name = "Watch the new Thor movie.";
+            $test_client = new Client($client_name, $stylist_id);
+            //Act
+            $result = $test_client->getStylistId();
+            //Assert
+            $this->assertEquals($stylist_id, $result);
+        }
+
+        function test_setStylistId()
+        {
+            //Arrange
+            $name = "Jose Ebert";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
+
+            $name2 = "Sally Hanson";
+            $test_stylist2 = new Stylist($name2);
+            $test_stylist2->save();
+            $stylist_id2 = $test_stylist2->getId();
+            $client_name = "Watch the new Thor movie.";
+            $test_client = new Client($client_name, $stylist_id);
+            //Act
+            $test_client->setStylistId($stylist_id2);
+            $result = $test_client->getStylistId();
+            //Assert
+            $this->assertEquals($stylist_id2, $result);
+        }
 
         function test_save()
         {
@@ -123,7 +124,7 @@
             $test_stylist = new Stylist($name);
             $test_stylist->save();
             $stylist_id = $test_stylist->getId();
-            
+
             $client_name = "Mary Poppins";
             $client_name2 = "Pippi Longstocking";
             $test_client = new Client($client_name, $stylist_id);
@@ -157,23 +158,23 @@
             $this->assertEquals([], $result);
         }
 
-        // function test_find()
-        // {
-        //     //Arrange
-        //     $name = "Home stuff";
-        //     $test_category = new Category($name);
-        //     $test_category->save();
-        //     $category_id = $test_category->getId();
-        //     $description = "Eat breakfast.";
-        //     $description2 = "Eat lunch.";
-        //     $test_task = new Task($description, $category_id);
-        //     $test_task->save();
-        //     $test_task2 = new Task($description2, $category_id);
-        //     $test_task2->save();
-        //     //Act
-        //     $result = Task::find($test_task->getId());
-        //     //Assert
-        //     $this->assertEquals($test_task, $result);
-        // }
+        function test_find()
+        {
+            //Arrange
+            $name = "Jose Ebert";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
+            $client_name = "Mary Poppins";
+            $client_name2 = "Pippi Longstocking";
+            $test_client = new Client($client_name, $stylist_id);
+            $test_client->save();
+            $test_client2 = new Client($client_name2, $stylist_id);
+            $test_client2->save();
+            //Act
+            $result = Client::find($test_client->getId());
+            //Assert
+            $this->assertEquals($test_client, $result);
+        }
     }
 ?>

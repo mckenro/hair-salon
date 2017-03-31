@@ -71,21 +71,21 @@ class Client
         }
     }
 
-    // static function find($search_id)
-    // {
-    //     $found_task = null;
-    //     $returned_tasks = $GLOBALS['DB']->prepare("SELECT * FROM tasks WHERE id = :id");
-    //     $returned_tasks->bindParam(':id', $search_id, PDO::PARAM_STR);
-    //     $returned_tasks->execute();
-    //     foreach($returned_tasks as $task) {
-    //         $client_name = $task['client_name'];
-    //         $category_id = $task['category_id'];
-    //         $id = $task['id'];
-    //         if ($id == $search_id) {
-    //           $found_task = new Task($client_name, $category_id, $id);
-    //         }
-    //     }
-    //     return $found_task;
-    //}
+    static function find($search_id)
+    {
+        $found_client = null;
+        $returned_clients = $GLOBALS['DB']->prepare("SELECT * FROM clients WHERE id = :id");
+        $returned_clients->bindParam(':id', $search_id, PDO::PARAM_STR);
+        $returned_clients->execute();
+        foreach($returned_clients as $client) {
+            $client_name = $client['client_name'];
+            $stylist_id = $client['stylist_id'];
+            $id = $client['id'];
+            if ($id == $search_id) {
+              $found_client = new Client($client_name, $stylist_id, $id);
+            }
+        }
+        return $found_client;
+    }
 }
 ?>

@@ -36,34 +36,34 @@
             }
         }
 
-        // function delete()
-        // {
-        //     $executed = $GLOBALS['DB']->exec("DELETE FROM categories WHERE id = {$this->getId()};");
-        //      if (!$executed) {
-        //          return false;
-        //      }
-        //      $executed = $GLOBALS['DB']->exec("DELETE FROM tasks WHERE category_id = {$this->getId()};");
-        //      if (!$executed) {
-        //          return false;
-        //      } else {
-        //          return true;
-        //      }
-        // }
-        //
-        // function getTasks()
-        // {
-        //     $tasks = Array();
-        //     $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks WHERE category_id = {$this->getId()};");
-        //     foreach($returned_tasks as $task) {
-        //         $description = $task['description'];
-        //         $task_id = $task['id'];
-        //         $category_id = $task['category_id'];
-        //         $new_task = new Task($description, $category_id, $task_id);
-        //         array_push($tasks, $new_task);
-        //     }
-        //     return $tasks;
-        // }
-        //
+        function delete()
+        {
+            $executed = $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
+             if (!$executed) {
+                 return false;
+             }
+             $executed = $GLOBALS['DB']->exec("DELETE FROM clients WHERE category_id = {$this->getId()};");
+             if (!$executed) {
+                 return false;
+             } else {
+                 return true;
+             }
+        }
+
+        function getClients()
+        {
+            $clients = Array();
+            $returned_clients = $GLOBALS['DB']->query("SELECT * FROM clients WHERE stylist_id = {$this->getId()};");
+            foreach($returned_clients as $client) {
+                $client_name = $client['client_name'];
+                $client_id = $client['id'];
+                $stylist_id = $client['stylist_id'];
+                $new_client = new Client($description, $stylist_id, $client_id);
+                array_push($clients, $new_client);
+            }
+            return $clients;
+        }
+
         static function getAll()
         {
             $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
