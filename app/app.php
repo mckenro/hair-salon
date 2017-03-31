@@ -19,7 +19,17 @@
     Request::enableHttpMethodParameterOverride();
 
     $app->get("/", function() use ($app) {
-         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+       return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+    $app->get("/clients", function() use ($app) {
+        return $app['twig']->render('clients.html.twig', array('clients' => Client::getAll()));
+    });
+
+    $app->post("/clients", function() use ($app) {
+        $client = new Client($_POST['client_name']);
+        $client->save();
+        return $app['twig']->render('stylists.html.twig', array('clients' => Client::getAll()));
     });
 
     $app->get("/stylists", function() use ($app) {
