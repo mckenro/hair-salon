@@ -81,19 +81,19 @@
             $this->assertEquals([], $result);
         }
 
-        // function test_find()
-        // {
-        //     //Arrange
-        //     $name = "Wash the dog";
-        //     $name2 = "Home stuff";
-        //     $test_Category = new Category($name);
-        //     $test_Category->save();
-        //     $test_Category2 = new Category($name2);
-        //     $test_Category2->save();
-        //     //Act
-        //     $result = Category::find($test_Category->getId());
-        //     //Assert
-        //     $this->assertEquals($test_Category, $result);
-        // }
+        function test_find()
+        {
+            //Arrange
+            $name = "Mary Poppins";
+            $name2 = "Sally Hanson";
+            $test_Stylist = new Stylist($name);
+            $test_Stylist->save();
+            $test_Stylist2 = new Stylist($name2);
+            $test_Stylist2->save();
+            //Act
+            $result = Stylist::find($test_Stylist->getId());
+            //Assert
+            $this->assertEquals($test_Stylist, $result);
+        }
     }
 ?>
