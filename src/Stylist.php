@@ -42,7 +42,7 @@
              if (!$executed) {
                  return false;
              }
-             $executed = $GLOBALS['DB']->exec("DELETE FROM clients WHERE category_id = {$this->getId()};");
+             $executed = $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
              if (!$executed) {
                  return false;
              } else {
@@ -58,7 +58,7 @@
                 $client_name = $client['client_name'];
                 $client_id = $client['id'];
                 $stylist_id = $client['stylist_id'];
-                $new_client = new Client($description, $stylist_id, $client_id);
+                $new_client = new Client($client_name, $stylist_id, $client_id);
                 array_push($clients, $new_client);
             }
             return $clients;
@@ -82,16 +82,16 @@
           $GLOBALS['DB']->exec("DELETE FROM stylists;");
         }
 
-        // function update($new_name)
-        // {
-        //     $executed = $GLOBALS['DB']->exec("UPDATE categories SET name = '{$new_name}' WHERE id = {$this->getId()};");
-        //     if ($executed) {
-        //        $this->setName($new_name);
-        //        return true;
-        //     } else {
-        //        return false;
-        //     }
-        // }
+        function update($new_name)
+        {
+            $executed = $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}' WHERE id = {$this->getId()};");
+            if ($executed) {
+               $this->setName($new_name);
+               return true;
+            } else {
+               return false;
+            }
+        }
 
         static function find($search_id)
         {
@@ -108,5 +108,16 @@
             }
             return $found_stylist;
         }
+
+        // function update($new_name)
+        // {
+        //     $executed = $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$new_name}' WHERE id = {$this->getId()};");
+        //     if ($executed) {
+        //        $this->setName($new_name);
+        //        return true;
+        //     } else {
+        //        return false;
+        //     }
+        // }
     }
 ?>

@@ -5,11 +5,14 @@
     */
     require_once "src/Client.php";
     require_once "src/Stylist.php";
+
     $server = 'mysql:host=localhost:8889;dbname=hair_salon_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
+
     class ClientTest extends PHPUnit_Framework_TestCase
+    
     {
         protected function tearDown()
         {
@@ -17,54 +20,54 @@
           Client::deleteAll();
         }
 
-        // function test_getId()
-        // {
-        //     //Arrange
-        //     $name = "Jose Ebert";
-        //     $test_category = new Category($name);
-        //     $test_category->save();
-        //     $description = "Wash the dog";
-        //     $category_id = $test_category->getId();
-        //     $test_task = new Task($description, $category_id);
-        //     $test_task->save();
-        //     //Act
-        //     $result = $test_task->getId();
-        //     //Assert
-        //     $this->assertEquals(true, is_numeric($result));
-        // }
-        //
-        // function test_getDescription()
-        // {
-        //     //Arrange
-        //     $name = "Jose Ebert";
-        //     $test_category = new Category($name);
-        //     $test_category->save();
-        //     $category_id = $test_category->getId();
-        //     $description = "Watch the new Thor movie.";
-        //     $test_task = new Task($description, $category_id);
-        //     //Act
-        //     $result = $test_task->getDescription();
-        //     //Assert
-        //     $this->assertEquals($description, $result);
-        // }
-        //
-        // function test_setDescription()
-        // {
-        //     //Arrange
-        //     $name = "Jose Ebert";
-        //     $test_category = new Category($name);
-        //     $test_category->save();
-        //     $category_id = $test_category->getId();
-        //     $description = "Watch the new Thor movie.";
-        //     $test_task = new Task($description, $category_id);
-        //     $new_description = "Watch the new Star Wars movie.";
-        //     //Act
-        //     $test_task->setDescription($new_description);
-        //     $result = $test_task->getDescription();
-        //     //Assert
-        //     $this->assertEquals($new_description, $result);
-        // }
-        //
+        function test_getId()
+        {
+            //Arrange
+            $name = "Jose Ebert";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+            $client_name = "Mary Poppins";
+            $stylist_id = $test_stylist->getId();
+            $test_client = new Client($client_name, $stylist_id);
+            $test_client->save();
+            //Act
+            $result = $test_client->getId();
+            //Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+
+        function test_getName()
+        {
+            //Arrange
+            $name = "Jose Ebert";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
+            $client_name = "Mary Poppins";
+            $test_client = new Client($client_name, $stylist_id);
+            //Act
+            $result = $test_client->getName();
+            //Assert
+            $this->assertEquals($client_name, $result);
+        }
+
+        function test_setName()
+        {
+            //Arrange
+            $name = "Jose Ebert";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
+            $client_name = "Mary Poppins";
+            $test_client = new Client($client_name, $stylist_id);
+            $new_client_name = "Pippi Longstocking";
+            //Act
+            $test_client->setName($new_client_name);
+            $result = $test_client->getName();
+            //Assert
+            $this->assertEquals($new_client_name, $result);
+        }
+
         function test_getStylistId()
         {
             //Arrange
@@ -72,7 +75,7 @@
             $test_stylist = new Stylist($name);
             $test_stylist->save();
             $stylist_id = $test_stylist->getId();
-            $client_name = "Watch the new Thor movie.";
+            $client_name = "Mary Poppins";
             $test_client = new Client($client_name, $stylist_id);
             //Act
             $result = $test_client->getStylistId();

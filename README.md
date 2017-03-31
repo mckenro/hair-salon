@@ -1,24 +1,33 @@
-# _PHP Project Template_
+# _Hair Salon App_
 
-#### _Starting template for php projects, March, 2017_
+#### _Epicodus PHP Week 3 Independent Project, March 31, 2017_
 
 #### By _**Rob McKenzie**_
 
 ## Description
 
-_Starting files and directory structure for php projects. See the composer.json file for project dependencies._
+_Program that allows the input of Stylists and their Clients into a MySql database. Stylists and Clients can also be editted and deleted. View the project repository on GitHub here https://github.com/mckenro/hair_salon_
 
 ## Setup/Installation Requirements
 
 * _Download or clone project files_
 * _Run Composer Install or Composer Update in terminal_
-* _Update Class names and Test names as appropriate_
+* _Use MAMP to run the Apache server from the project web folder._
 
 ## Specs (include project specs below)
-* _spec 1_
-* _spec 2_
-* _spec 3_
-* _..._
+* _Create tests for Stylist object_
+* _Create functions for testing the Stylist object_
+* _Add initial routing to app.php_
+* _Create tests for Client object_
+* _Create functions for testing the Client object_
+* _Create views pages_
+* _Add routing_
+
+## SQL Commands for the database
+* _CREATE DATABASE hair_salon;_
+* _CREATE TABLE stylists (name VARCHAR (255), id serial PRIMARY KEY);_
+* _CREATE TABLE clients (name VARCHAR (255), id serial PRIMARY KEY);_
+* _ALTER TABLE clients ADD stylist_id;_
 
 ## Known Bugs
 
@@ -34,6 +43,7 @@ _If you run into any issues or have questions, ideas or concerns, please contact
 * _Silex 1.1_
 * _Twig 1.0_
 * _PHPUnit 4.5.*_
+* _MySql_
 
 ### License
 

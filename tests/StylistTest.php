@@ -95,5 +95,21 @@
             //Assert
             $this->assertEquals($test_Stylist, $result);
         }
+
+        function testUpdate()
+        {
+            //Arrange
+            $name = "Jose Ebert";
+            $test_stylist = new Stylist($name);
+            $test_stylist->save();
+
+            $new_name = "Sally Hanson";
+
+            //Act
+            $test_stylist->update($new_name);
+
+            //Assert
+            $this->assertEquals("Sally Hanson", $test_stylist->getName());
+        }
     }
 ?>

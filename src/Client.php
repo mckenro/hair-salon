@@ -4,6 +4,7 @@ class Client
     private $client_name;
     private $stylist_id;
     private $id;
+    
     function __construct($client_name, $assigned_stylist_id, $id = null)
     {
         $this->client_name = $client_name;
@@ -55,7 +56,7 @@ class Client
             $client_name = $client['client_name'];
             $id = $client['id'];
             $stylist_id = $client['stylist_id'];
-            $new_client = new Client($client_name, $stylist_id, $id);
+            $new_client = new Client($client_name, $stylist_id);
             array_push($clients, $new_client);
         }
         return $clients;
