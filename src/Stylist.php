@@ -77,10 +77,10 @@
             return $stylists;
         }
 
-        // static function deleteAll()
-        // {
-        //   $GLOBALS['DB']->exec("DELETE FROM stylists;");
-        // }
+        static function deleteAll()
+        {
+          $GLOBALS['DB']->exec("DELETE FROM stylists;");
+        }
 
         // function update($new_name)
         // {
@@ -92,7 +92,7 @@
         //        return false;
         //     }
         // }
-        //
+
         // static function find($search_id)
         // {
         //     $found_category = null;

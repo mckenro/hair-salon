@@ -12,7 +12,7 @@
     {
         protected function tearDown()
         {
-          //  Stylist::deleteAll();
+           Stylist::deleteAll();
             // Client::deleteAll();
         }
 
@@ -65,21 +65,21 @@
             $this->assertEquals([$test_Stylist, $test_Stylist2], $result);
         }
 
-        // function test_deleteAll()
-        // {
-        //     //Arrange
-        //     $name = "Mary Poppins";
-        //     $name2 = "Sally Hanson";
-        //     $test_Stylist = new Stylist($name);
-        //     $test_Stylist->save();
-        //     $test_Stylist2 = new Stylist($name2);
-        //     $test_Stylist2->save();
-        //     //Act
-        //     Stylist::deleteAll();
-        //     $result = Stylist::getAll();
-        //     //Assert
-        //     $this->assertEquals([], $result);
-        // }
+        function test_deleteAll()
+        {
+            //Arrange
+            $name = "Mary Poppins";
+            $name2 = "Sally Hanson";
+            $test_Stylist = new Stylist($name);
+            $test_Stylist->save();
+            $test_Stylist2 = new Stylist($name2);
+            $test_Stylist2->save();
+            //Act
+            Stylist::deleteAll();
+            $result = Stylist::getAll();
+            //Assert
+            $this->assertEquals([], $result);
+        }
 
         // function test_find()
         // {
