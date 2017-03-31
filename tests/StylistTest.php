@@ -27,17 +27,17 @@
             $this->assertTrue($executed, "Stylist not successfully saved to database");
         }
 
-        // function test_getName()
-        // {
-        //     //Arrange
-        //     $name = "Work stuff";
-        //     $test_Category = new Category($name);
-        //     //Act
-        //     $result = $test_Category->getName();
-        //     //Assert
-        //     $this->assertEquals($name, $result);
-        // }
-        //
+        function test_getName()
+        {
+            //Arrange
+            $name = "Mary Poppins";
+            $test_Stylist = new Stylist($name);
+            //Act
+            $result = $test_Stylist->getName();
+            //Assert
+            $this->assertEquals($name, $result);
+        }
+
         // function test_getId()
         // {
         //     //Arrange
