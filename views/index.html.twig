@@ -4,11 +4,11 @@
 <div class="row">
   <div class="col-md-6">
 
-  {% if stylists is not empty %}
+  {% if stylist is not empty %}
       <h2>Meet Our Stylists:</h2>
       <ul>
-          {% for stylist in stylists %}
-              <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></li>
+          {% for stylists in stylist %}
+              <li><a href="/stylists/{{ stylists.getId }}">{{ stylists.getName }}</a></li>
           {% endfor %}
       </ul>
   {% else %}

@@ -104,9 +104,9 @@
                 $stylist_id = $stylist['id'];
                 if ($stylist_id == $search_id) {
                   $found_stylist = new Stylist($stylist_name, $stylist_id);
+                  return $found_stylist;
                 }
             }
-            return $found_stylist;
         }
 
         // function update($new_name)
