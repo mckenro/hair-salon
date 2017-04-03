@@ -4,7 +4,7 @@ class Client
     private $client_name;
     private $stylist_id;
     private $id;
-    
+
     function __construct($client_name, $assigned_stylist_id, $id = null)
     {
         $this->client_name = $client_name;
@@ -56,7 +56,7 @@ class Client
             $client_name = $client['client_name'];
             $id = $client['id'];
             $stylist_id = $client['stylist_id'];
-            $new_client = new Client($client_name, $stylist_id);
+            $new_client = new Client($client_name, $stylist_id, $id);
             array_push($clients, $new_client);
         }
         return $clients;
@@ -69,6 +69,17 @@ class Client
             return true;
         } else {
             return false;
+        }
+    }
+
+    function update($new_name)
+    {
+        $executed = $GLOBALS['DB']->exec("UPDATE clients SET client_name = '{$new_name}' WHERE id = {$this->getId()};");
+        if ($executed) {
+           $this->setName($new_name);
+           return true;
+        } else {
+           return false;
         }
     }
 

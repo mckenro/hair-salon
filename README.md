@@ -23,10 +23,10 @@ _Program that allows the input of Stylists and their Clients into a MySql databa
 * _Create views pages_
 * _Add routing_
 
-## SQL Commands for the database
+## SQL Commands for the databases
 * _CREATE DATABASE hair_salon;_
 * _CREATE TABLE stylists (name VARCHAR (255), id serial PRIMARY KEY);_
-* _CREATE TABLE clients (name VARCHAR (255), id serial PRIMARY KEY);_
+* _CREATE TABLE clients (client_name VARCHAR (255), stylist_id (INT), id serial PRIMARY KEY);_
 * _ALTER TABLE clients ADD stylist_id;_
 
 ## Known Bugs

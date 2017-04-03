@@ -9,7 +9,7 @@
         <p>The clients for {{ stylist.getName }} are:</p>
         <ul>
             {% for client in clients %}
-                <li>{{ client.getName }}</li>
+            <li><a href="/clients/{{ client.getId }}">{{ client.getName }}</a></li>
             {% endfor %}
         </ul>
     {% endif %}
