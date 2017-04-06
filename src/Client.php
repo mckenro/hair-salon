@@ -72,6 +72,20 @@ class Client
         }
     }
 
+    function delete()
+    {
+        $executed = $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");
+         if (!$executed) {
+             return false;
+         }
+         $executed = $GLOBALS['DB']->exec("DELETE FROM stylists WHERE client_id = {$this->getId()};");
+         if (!$executed) {
+             return false;
+         } else {
+             return true;
+         }
+    }
+
     function update($new_name)
     {
         $executed = $GLOBALS['DB']->exec("UPDATE clients SET client_name = '{$new_name}' WHERE id = {$this->getId()};");
