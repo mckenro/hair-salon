@@ -51,7 +51,7 @@
         $client_name = $_POST['name'];
         $client = Client::find($id);
         $client->update($client_name);
-        return $app['twig']->render('stylists.html.twig', array('stylist' => Stylist::getAll()));
+        return $app['twig']->render('clients_edit.html.twig', array('clients' => $client));
     });
 
     $app->get("/stylists/{id}", function($id) use ($app) {
